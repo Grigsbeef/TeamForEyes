@@ -29,7 +29,7 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
         rb2d.velocity = new Vector2(horizontal * speed, vertical * speed);
-        if (Input.GetKey(KeyCode.W) && isGrounded)
+        if (Input.GetKey(KeyCode.W) && isGrounded == true)
         {
             Jump();
         }
