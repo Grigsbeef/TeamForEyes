@@ -23,15 +23,24 @@ public class PlayerController : MonoBehaviour
     {
        horizontal = Input.GetAxisRaw("Horizontal");
        //vertical = Input.GetAxisRaw("Vertical");
-        
     }
 
     private void FixedUpdate()
     {
-        rb2d.velocity = new Vector2(horizontal * speed, vertical * speed);
+        //rb2d.velocity = new Vector2(vertical, speed);
         if (Input.GetKey(KeyCode.W) && isGrounded == true)
         {
             Jump();
+        }
+
+        if(Input.GetKey(KeyCode.D))
+        {
+            rb2d.AddForce(transform.right * speed, ForceMode2D.Impulse);
+        }
+
+        if (Input.GetKey(KeyCode.A))
+        {
+            rb2d.AddForce(-transform.right * speed, ForceMode2D.Impulse);
         }
     }
 
@@ -45,7 +54,7 @@ public class PlayerController : MonoBehaviour
 
     void Jump()
     {
-        rb2d.AddForce(transform.up * jumpHeight,ForceMode2D.Impulse);
+        rb2d.velocity = new Vector2(rb2d.velocity.x, jumpHeight);
         //rb2d.AddForce(transform.forward * jumpHeight, ForceMode2D.Impulse);
         isGrounded = false;
     }
