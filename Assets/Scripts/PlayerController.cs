@@ -32,6 +32,7 @@ public class PlayerController : MonoBehaviour
         //vertical = Input.GetAxisRaw("Vertical");
 
         Anim.SetFloat("KnightWalking", rb2d.velocity.x);
+        Anim.SetFloat("KnightJumping", rb2d.velocity.y);
 
         if (rb2d.velocity.x > 0.01 && sprite.flipX == true)
         {
